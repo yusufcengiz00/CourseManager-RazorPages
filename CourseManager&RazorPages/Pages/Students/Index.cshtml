@@ -1,0 +1,105 @@
+﻿@page
+@model CourseManager_RazorPages.Pages.Students.IndexModel
+@{
+    ViewData["Title"] = "Öğrenci Listesi";
+    ViewData["PageTitle"] = "Öğrenciler";
+}
+
+<h1 class="mt-4">@ViewData["PageTitle"]</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+    <li class="breadcrumb-item active">Öğrenciler</li>
+</ol>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Hata!</strong> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            <i class="fas fa-user-graduate me-1"></i>
+            Öğrenci Yönetimi
+        </div>
+        <a href="/Students/Create" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Yeni Öğrenci Ekle
+        </a>
+    </div>
+
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" value="@Model.AramaKelimesi" placeholder="Öğrenci adı, soyadı veya e-posta ara..." aria-label="Arama">
+
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search me-1"></i> Ara
+                        </button>
+
+                        <a href="/Students/Index" class="btn btn-outline-secondary">
+                            <i class="fas fa-eraser me-1"></i> Temizle
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>E-posta</th>
+                        <th>Telefon</th>
+                        <th>Kayıt Tarihi</th>
+                        <th class="text-center" style="width: 220px;">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.listele != null && Model.listele.Count > 0)
+                    {
+                        foreach (var student in Model.listele)
+                        {
+                            <tr>
+                                <td><strong>@student.FirstName @student.LastName</strong></td>
+                                <td>@student.Email</td>
+                                <td>@student.Phone</td>
+                                <td>@student.RegistrationDate</td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm" role="group">
+
+                                        <a href="/Students/Edit?StudentID=@student.StudentID" class="btn btn-warning" title="Düzenle">
+                                            <i class="fas fa-edit"></i> Düzenle
+                                        </a>
+
+                                        <a href="/Students/Delete?StudentID=@student.StudentID"
+                                           class="btn btn-danger"
+                                           title="Sil"
+                                           onclick="return confirm('@student.FirstName @student.LastName isimli öğrenciyi silmek istediğinize emin misiniz?');">
+                                            <i class="fas fa-trash"></i> Sil
+                                        </a>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-5">
+                                <i class="fas fa-info-circle fa-2x mb-3 d-block"></i>
+                                Kayıtlı öğrenci veya arama kriterine uygun sonuç bulunamadı.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

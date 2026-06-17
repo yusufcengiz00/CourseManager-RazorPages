@@ -1,0 +1,78 @@
+﻿@page
+@model CourseManager_RazorPages.Pages.Students.EditModel
+@{
+    ViewData["Title"] = "Öğrenci Bilgilerini Düzenle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="fas fa-user-edit me-2"></i> Öğrenci Bilgilerini Düzenle</h4>
+                </div>
+                <div class="card-body p-4">
+
+                    @if (!string.IsNullOrEmpty(Model.errorMessage))
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Hata:</strong> @Model.errorMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="POST">
+                        <input type="hidden" name="StudentID" value="@Model.studentInfo.StudentID" />
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Adı</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="FirstName" value="@Model.studentInfo.FirstName" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Soyadı</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="LastName" value="@Model.studentInfo.LastName" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">E-posta</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="Email" value="@Model.studentInfo.Email" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Telefon</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" name="Phone" value="@Model.studentInfo.Phone" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Kayıt Tarihi</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" name="RegistrationDate" value="@Model.studentInfo.RegistrationDate" />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mt-4">
+                            <div class="col-sm-6 d-grid mb-2 mb-sm-0">
+                                <button type="submit" class="btn btn-warning fw-bold">Değişiklikleri Kaydet</button>
+                            </div>
+                            <div class="col-sm-6 d-grid">
+                                <a class="btn btn-outline-secondary" href="/Students/Index" role="button">İptal</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

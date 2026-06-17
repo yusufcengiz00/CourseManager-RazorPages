@@ -1,0 +1,59 @@
+﻿@page
+@model CourseManager_RazorPages.Pages.Reports.IndexModel
+@{
+    ViewData["Title"] = "Gelişmiş Analiz ve Raporlar";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold text-dark mb-1">Analiz & Raporlar</h1>
+        <p class="text-muted mb-0">Sistem verilerinden otomatik üretilen yönetsel ve istatistiksel özet.</p>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm" onclick="window.print()">
+        <i class="fa-solid fa-print me-2"></i>Raporu Yazdır
+    </button>
+</div>
+
+@if (TempData["RaporHata"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i> @TempData["RaporHata"]
+    </div>
+}
+
+<h5 class="mb-3 text-secondary fw-semibold"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Sistem Metrikleri</h5>
+<div class="row g-4">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-3 bg-gradient bg-primary text-white h-100 p-4">
+            <span class="opacity-75 small fw-semibold text-uppercase d-block mb-1">Müfredat Değeri</span>
+            <h3 class="fw-bold mb-2">@Model.ToplamKursDegeri.ToString("N2") TL</h3>
+            <p class="mb-0 small opacity-75 mt-auto"><i class="fa-solid fa-wallet me-1"></i> Kursların toplam maliyeti</p>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-3 bg-white border-start border-success border-4 h-100 p-4">
+            <span class="text-success small fw-semibold text-uppercase d-block mb-1">Ortalama Süre</span>
+            <h3 class="fw-bold text-dark mb-2">@Model.OrtalamaKursSuresi.ToString("F1") Saat</h3>
+            <p class="mb-0 small text-muted mt-auto"><i class="fa-regular fa-clock me-1"></i> Kurs başına düşen süre</p>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-3 bg-white border-start border-warning border-4 h-100 p-4">
+            <span class="text-warning small fw-semibold text-uppercase d-block mb-1">En Kapsamlı Kurs</span>
+            <h4 class="fw-bold text-dark mb-2 text-truncate" title="@Model.EnUzunKurs">@Model.EnUzunKurs</h4>
+            <p class="mb-0 small text-muted mt-auto"><i class="fa-solid fa-hourglass-high me-1"></i> Saat yönünden en uzun kurs</p>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-3 bg-white border-start border-danger border-4 h-100 p-4">
+            <span class="text-danger small fw-semibold text-uppercase d-block mb-1">Aylık Kayıt Trendi</span>
+            <h3 class="fw-bold text-dark mb-2">+@Model.SonBirAyOgrenci Öğrenci</h3>
+            <p class="mb-0 small text-muted mt-auto"><i class="fa-solid fa-arrow-trend-up text-success me-1"></i> Son 30 günde katılanlar</p>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,55 @@
+﻿@page
+@model CourseManager_RazorPages.Pages.Certificates.CreateModel
+@{
+    ViewData["Title"] = "Yeni Sertifika Ekle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Yeni Sertifika Ekleme</h4>
+                </div>
+                <div class="card-body p-4">
+
+                    @if (!string.IsNullOrEmpty(Model.errorMessage))
+                    {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Hata:</strong> @Model.errorMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="POST">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Sertifika No</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="CertificateNo" value="@Model.certificateInfo.CertificateNo" placeholder="Örn: CERT-2026-001" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Veriliş Tarihi</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" name="IssueDate" value="@Model.certificateInfo.IssueDate" />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mt-4">
+                            <div class="col-sm-6 d-grid mb-2 mb-sm-0">
+                                <button type="submit" class="btn btn-primary">Sertifikayı Kaydet</button>
+                            </div>
+                            <div class="col-sm-6 d-grid">
+                                <a class="btn btn-outline-secondary" href="/Certificates/Index" role="button">İptal</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@page
+@model CourseManager_RazorPages.Pages.Courses.CreateModel
+@{
+    ViewData["Title"] = "Yeni Kurs Ekle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Yeni Kurs Ekleme Ekranı</h4>
+                </div>
+                <div class="card-body p-4">
+
+                    @if (!string.IsNullOrEmpty(Model.errorMessage))
+                    {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Hata:</strong> @Model.errorMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="POST">
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Kurs Adı</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="CourseName" value="@Model.courseInfo.CourseName" placeholder="Örn: Web Geliştirme" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Eğitmen</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="Instructor" value="@Model.courseInfo.Instructor" placeholder="Örn: Engin Demiroğ" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Süre (Saat)</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="Duration" value="@Model.courseInfo.Duration" placeholder="Örn: 60" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Fiyat (TL)</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="Price" value="@Model.courseInfo.Price" placeholder="Örn: 1500.00" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label fw-semibold">Başlangıç Tarihi</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" name="StartDate" value="@Model.courseInfo.StartDate" />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mt-4">
+                            <div class="col-sm-6 d-grid mb-2 mb-sm-0">
+                                <button type="submit" class="btn btn-primary">Kursu Kaydet</button>
+                            </div>
+                            <div class="col-sm-6 d-grid">
+                                <a class="btn btn-outline-secondary" href="/Courses/Index" role="button">İptal</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
