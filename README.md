@@ -77,3 +77,57 @@ GO
     dotnet run
     ```
 5.  Tarayıcınızda açılan adresten (varsayılan: `https://localhost:5001` veya `http://localhost:5000`) kullanıcı portalına erişebilirsiniz.
+
+
+---
+
+## 📸 Uygulama Görselleri
+
+### Arayüz
+
+<p align="center">
+<img width="1527" height="902" alt="image" src="https://github.com/user-attachments/assets/921dfc8c-e933-45fa-ab66-709c69d66f1e" />
+</p>
+
+---
+
+### Admin Panel Giriş Ekranı
+
+<p align="center">
+<img width="1563" height="903" alt="image" src="https://github.com/user-attachments/assets/5365f198-bdf5-4334-b9c9-0044be7487c4" />
+</p>
+
+---
+
+### Öğrenci Yönetim Ekranı
+
+<p align="center">
+<img width="1562" height="911" alt="image" src="https://github.com/user-attachments/assets/717fc400-73f5-4be6-abec-0c5137559b06" />
+</p>
+
+---
+
+### Kurs Yönetim Ekranı
+
+<p align="center">
+<img width="1570" height="910" alt="image" src="https://github.com/user-attachments/assets/a950299c-a4e5-448e-94cf-81193256ea9f" />
+</p>
+
+---
+
+### Sertifika Yönetim Ekranı
+
+<p align="center">
+<img width="1571" height="908" alt="image" src="https://github.com/user-attachments/assets/bf7484c4-3651-4cd3-80ee-3bc51f9569e6" />
+</p>
+
+
+---
+
+### Sistem Raporu Ekranı
+
+<p align="center">
+<img width="1632" height="781" alt="image" src="https://github.com/user-attachments/assets/f7dce430-1f4b-411d-907c-0823edc541fa" />
+
+</p>
+
