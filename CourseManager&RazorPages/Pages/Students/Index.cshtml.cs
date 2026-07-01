@@ -14,7 +14,6 @@ namespace CourseManager_RazorPages.Pages.Students
 
         public void OnGet(string search)
         {
-            // Eğer arama parametresi dolu geldiyse değişkene aktar
             if (!string.IsNullOrEmpty(search))
             {
                 AramaKelimesi = search;
@@ -23,7 +22,7 @@ namespace CourseManager_RazorPages.Pages.Students
             YenileListeyi(AramaKelimesi);
         }
 
-        // Sil butonuna basıldığında tetiklenen metot
+
         public IActionResult OnGetDelete(string StudentID)
         {
             if (string.IsNullOrEmpty(StudentID))
@@ -56,7 +55,6 @@ namespace CourseManager_RazorPages.Pages.Students
             return RedirectToPage("/Students/Index");
         }
 
-        // Veritabanından öğrencileri (Arama filtresine göre) çeken yardımcı metot
         private void YenileListeyi(string filtre)
         {
             string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=CourseManagerDB;" +
@@ -69,7 +67,6 @@ namespace CourseManager_RazorPages.Pages.Students
 
                     string sql = "SELECT * FROM Students";
 
-                    // Eğer kullanıcı bir şey aratmışsa sorgunun sonuna güvenli LIKE filtresi ekliyoruz
                     if (!string.IsNullOrEmpty(filtre))
                     {
                         sql += " WHERE FirstName LIKE @filtre OR LastName LIKE @filtre OR Email LIKE @filtre";
@@ -77,7 +74,6 @@ namespace CourseManager_RazorPages.Pages.Students
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        // SQL injection engellemek için parametreyi % işaretleriyle bağlıyoruz (SQL LIKE kuralı)
                         if (!string.IsNullOrEmpty(filtre))
                         {
                             command.Parameters.AddWithValue("@filtre", "%" + filtre + "%");

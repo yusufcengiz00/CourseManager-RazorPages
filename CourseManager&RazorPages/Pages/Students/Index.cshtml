@@ -1,47 +1,43 @@
-﻿@page
+@page
 @model CourseManager_RazorPages.Pages.Students.IndexModel
 @{
     ViewData["Title"] = "Öğrenci Listesi";
-    ViewData["PageTitle"] = "Öğrenciler";
 }
 
-<h1 class="mt-4">@ViewData["PageTitle"]</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
-    <li class="breadcrumb-item active">Öğrenciler</li>
-</ol>
+<div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+    <div>
+        <h1 class="fw-bold text-dark mb-1">Öğrenci Yönetimi</h1>
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/Admin/Index" class="text-decoration-none">Ana Sayfa</a></li>
+            <li class="breadcrumb-item active">Öğrenciler</li>
+        </ol>
+    </div>
+    <a href="/Students/Create" class="btn btn-premium d-inline-flex align-items-center gap-2">
+        <i class="fas fa-plus"></i>
+        <span>Yeni Öğrenci Ekle</span>
+    </a>
+</div>
 
 @if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Hata!</strong> @TempData["ErrorMessage"]
+    <div class="alert alert-danger alert-dismissible fade show rounded-3 animate-fade-in" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i><strong>Hata!</strong> @TempData["ErrorMessage"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
 
-<div class="card mb-4">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <div>
-            <i class="fas fa-user-graduate me-1"></i>
-            Öğrenci Yönetimi
-        </div>
-        <a href="/Students/Create" class="btn btn-primary btn-sm">
-            <i class="fas fa-plus"></i> Yeni Öğrenci Ekle
-        </a>
-    </div>
-
-    <div class="card-body">
-        <div class="row mb-3">
+<div class="card card-premium border-0 shadow-sm rounded-3 animate-fade-in" style="animation-delay: 0.1s;">
+    <div class="card-body p-4">
+        <!-- Arama Alanı -->
+        <div class="row mb-4">
             <div class="col-md-8">
                 <form method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" value="@Model.AramaKelimesi" placeholder="Öğrenci adı, soyadı veya e-posta ara..." aria-label="Arama">
-
-                        <button class="btn btn-primary" type="submit">
+                        <input type="text" class="form-control form-control-modern" name="search" value="@Model.AramaKelimesi" placeholder="Öğrenci adı, soyadı veya e-posta ara...">
+                        <button class="btn btn-premium" type="submit">
                             <i class="fas fa-search me-1"></i> Ara
                         </button>
-
-                        <a href="/Students/Index" class="btn btn-outline-secondary">
+                        <a href="/Students/Index" class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center px-3 ms-2 rounded-3">
                             <i class="fas fa-eraser me-1"></i> Temizle
                         </a>
                     </div>
@@ -50,8 +46,8 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover align-middle">
-                <thead class="table-dark">
+            <table class="table table-modern table-hover align-middle">
+                <thead>
                     <tr>
                         <th>Ad Soyad</th>
                         <th>E-posta</th>
@@ -66,24 +62,28 @@
                         foreach (var student in Model.listele)
                         {
                             <tr>
-                                <td><strong>@student.FirstName @student.LastName</strong></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: 600;">
+                                            @student.FirstName?[0]@student.LastName?[0]
+                                        </div>
+                                        <strong>@student.FirstName @student.LastName</strong>
+                                    </div>
+                                </td>
                                 <td>@student.Email</td>
-                                <td>@student.Phone</td>
+                                <td>@(string.IsNullOrEmpty(student.Phone) ? "-" : student.Phone)</td>
                                 <td>@student.RegistrationDate</td>
                                 <td class="text-center">
-                                    <div class="btn-group btn-group-sm" role="group">
-
-                                        <a href="/Students/Edit?StudentID=@student.StudentID" class="btn btn-warning" title="Düzenle">
-                                            <i class="fas fa-edit"></i> Düzenle
+                                    <div class="btn-group gap-1" role="group">
+                                        <a href="/Students/Edit?StudentID=@student.StudentID" class="btn btn-sm btn-premium btn-premium-warning py-1.5 px-3 rounded-2 text-dark" title="Düzenle">
+                                            <i class="fas fa-edit me-1"></i> Düzenle
                                         </a>
-
-                                        <a href="/Students/Delete?StudentID=@student.StudentID"
-                                           class="btn btn-danger"
+                                        <a href="/Students/Index?handler=Delete&StudentID=@student.StudentID"
+                                           class="btn btn-sm btn-premium btn-premium-danger py-1.5 px-3 rounded-2"
                                            title="Sil"
                                            onclick="return confirm('@student.FirstName @student.LastName isimli öğrenciyi silmek istediğinize emin misiniz?');">
-                                            <i class="fas fa-trash"></i> Sil
+                                            <i class="fas fa-trash me-1"></i> Sil
                                         </a>
-
                                     </div>
                                 </td>
                             </tr>
@@ -92,8 +92,8 @@
                     else
                     {
                         <tr>
-                            <td colspan="6" class="text-center text-muted py-5">
-                                <i class="fas fa-info-circle fa-2x mb-3 d-block"></i>
+                            <td colspan="5" class="text-center text-muted py-5">
+                                <i class="fas fa-info-circle fa-2x mb-3 d-block text-secondary"></i>
                                 Kayıtlı öğrenci veya arama kriterine uygun sonuç bulunamadı.
                             </td>
                         </tr>

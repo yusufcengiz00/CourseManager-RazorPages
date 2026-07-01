@@ -6,12 +6,9 @@ namespace CourseManager_RazorPages.Pages.Reports
 {
     public class IndexModel : PageModel
     {
-        // Temel Adetler
         public int ToplamOgrenci { get; set; } = 0;
         public int ToplamKurs { get; set; } = 0;
         public int ToplamSertifika { get; set; } = 0;
-
-        // 4 Analiz Metriği
         public decimal ToplamKursDegeri { get; set; } = 0;
         public double OrtalamaKursSuresi { get; set; } = 0;
         public string EnUzunKurs { get; set; } = "Yok";
@@ -28,7 +25,7 @@ namespace CourseManager_RazorPages.Pages.Reports
                 {
                     connection.Open();
 
-                    // --- TEMEL SAYILAR ---
+                    // Temel sayılar
                     using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Students", connection))
                     {
                         ToplamOgrenci = (int)cmd.ExecuteScalar();
@@ -42,7 +39,7 @@ namespace CourseManager_RazorPages.Pages.Reports
                         ToplamSertifika = (int)cmd.ExecuteScalar();
                     }
 
-                    // --- 4 ANALİZ METRİĞİ ---
+                    // Analiz metrikleri
                     using (SqlCommand cmd = new SqlCommand("SELECT SUM(Price) FROM Courses", connection))
                     {
                         var res = cmd.ExecuteScalar();

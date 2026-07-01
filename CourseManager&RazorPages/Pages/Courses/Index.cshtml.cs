@@ -54,9 +54,7 @@ namespace CourseManager_RazorPages.Pages.Courses
                                     CourseName = reader.IsDBNull(1) ? "" : reader.GetString(1),
                                     Instructor = reader.IsDBNull(2) ? "" : reader.GetString(2),
                                     Duration = reader.IsDBNull(3) ? "0" : reader.GetInt32(3).ToString(),
-                                    // DECIMAL tipini çekerken GetDecimal kullanıyoruz
                                     Price = reader.IsDBNull(4) ? "0" : reader.GetDecimal(4).ToString("F2"),
-                                    // DATE tipini çekerken GetDateTime kullanıyoruz
                                     StartDate = reader.IsDBNull(5) ? "" : reader.GetDateTime(5).ToString("dd.MM.yyyy")
                                 };
                                 listele.Add(kurs);

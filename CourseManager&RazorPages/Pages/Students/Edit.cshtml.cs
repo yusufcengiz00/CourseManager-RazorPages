@@ -33,14 +33,11 @@ namespace CourseManager_RazorPages.Pages.Students
                         {
                             if (reader.Read())
                             {
-                                // Veritabanından mevcut bilgileri çekip studentInfo nesnesine yüklüyoruz
                                 studentInfo.StudentID = reader.GetInt32(0).ToString();
                                 studentInfo.FirstName = reader.IsDBNull(1) ? "" : reader.GetString(1);
                                 studentInfo.LastName = reader.IsDBNull(2) ? "" : reader.GetString(2);
                                 studentInfo.Email = reader.IsDBNull(3) ? "" : reader.GetString(3);
                                 studentInfo.Phone = reader.IsDBNull(4) ? "" : reader.GetString(4);
-
-                                // Tarih alanını input[type=date]'in tanıyabilmesi için yyyy-MM-dd formatına çeviriyoruz
                                 studentInfo.RegistrationDate = reader.IsDBNull(5) ? "" : reader.GetDateTime(5).ToString("yyyy-MM-dd");
                             }
                             else
@@ -97,7 +94,7 @@ namespace CourseManager_RazorPages.Pages.Students
 
                         command.Parameters.AddWithValue("@StudentID", studentInfo.StudentID);
 
-                        command.ExecuteNonQuery(); // Sorguyu veritabanında yürüt
+                        command.ExecuteNonQuery();
                     }
                 }
             }

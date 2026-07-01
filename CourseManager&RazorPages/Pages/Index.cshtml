@@ -1,112 +1,129 @@
-﻿@page
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Ana Sayfa";
+    Layout = "_PortalLayout";
+    ViewData["Title"] = "Eğitim & Kariyer Portalı";
 }
 
-<!-- Başlık ve Karşılama Bölümü -->
-<div class="d-flex justify-content-between align-items-center mb-4">
+<!-- Hero / Tanıtım Bölümü -->
+<div class="hero-banner p-5 mb-5 animate-fade-in">
+    <div class="row align-items-center py-4">
+        <div class="col-lg-7 text-start">
+            <span class="badge bg-primary bg-opacity-25 text-light border border-primary border-opacity-50 px-3 py-2 rounded-pill mb-3 fw-semibold text-uppercase tracking-wider">
+                <i class="fa-solid fa-star text-warning me-1"></i> Geleceğini Tasarla
+            </span>
+            <h1 class="display-4 fw-extrabold text-white mb-3">CourseManager Akademi'ye Hoş Geldiniz</h1>
+            <p class="lead text-white-50 mb-4 fs-5">
+                Sektörün en tecrübeli eğitmenleri tarafından hazırlanan, pratik odaklı ve kariyer hedeflerinize uygun güncel eğitim programlarımızı inceleyin.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="#kurslar" class="btn btn-premium btn-premium-success py-2.5 px-4 rounded-pill fw-semibold">
+                    <i class="fa-solid fa-graduation-cap me-2"></i> Eğitimleri İncele
+                </a>
+                <a href="#hakkimizda" class="btn btn-outline-light py-2.5 px-4 rounded-pill fw-semibold">
+                    <span>Daha Fazla Bilgi</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-center position-relative">
+            <i class="fa-solid fa-laptop-code text-indigo display-1 opacity-25 position-absolute top-50 start-50 translate-middle" style="font-size: 15rem;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Neden Biz Bölümü -->
+<div class="row g-4 mb-5 text-center animate-fade-in" id="hakkimizda" style="animation-delay: 0.1s;">
+    <div class="col-md-4">
+        <div class="card border-0 bg-white p-4 rounded-4 shadow-sm h-100">
+            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <i class="fa-solid fa-chalkboard-user fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Uzman Eğitmenler</h5>
+            <p class="text-muted small mb-0">Sektörün içinde aktif çalışan ve tecrübeli profesyonellerden eğitim alın.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 bg-white p-4 rounded-4 shadow-sm h-100">
+            <div class="bg-success bg-opacity-10 text-success rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <i class="fa-solid fa-briefcase fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Kariyer Odaklı</h5>
+            <p class="text-muted small mb-0">Güncel iş ilanlarında en çok aranan teknolojilere yönelik müfredat.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 bg-white p-4 rounded-4 shadow-sm h-100">
+            <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <i class="fa-solid fa-award fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Sertifikasyon</h5>
+            <p class="text-muted small mb-0">Eğitim sonrasında başarınızı kanıtlayan doğrulanabilir katılım sertifikası.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Kurslar Listesi Başlık -->
+<div class="d-flex justify-content-between align-items-baseline mb-4 mt-5 animate-fade-in" id="kurslar" style="animation-delay: 0.15s;">
     <div>
-        <h1 class="fw-bold text-dark mb-1">Hoş Geldiniz, Admin 👋</h1>
-        <p class="text-muted mb-0">Sistemdeki güncel durum ve özet veriler aşağıda listelenmiştir.</p>
-    </div>
-    <div class="badge bg-light text-dark p-2 border shadow-sm">
-        <i class="fa-regular fa-calendar me-2 text-primary"></i>@DateTime.Now.ToString("dd MMMM yyyy")
+        <h2 class="fw-bold text-dark mb-1">Popüler Eğitimlerimiz</h2>
+        <p class="text-muted mb-0">Mevcut dönemde aktif olan ve kayıt yaptırabileceğiniz sınıflarımız.</p>
     </div>
 </div>
 
-<!-- MODERN İSTATİSTİK KARTLARI (KPI Cards) -->
-<div class="row g-4 mb-5">
-    <!-- Öğrenci İstatistiği -->
-    <div class="col-xl-4 col-md-6">
-        <div class="card border-0 shadow-sm rounded-3 h-100" style="border-left: 4px solid #3b82f6 !important;">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="text-uppercase fw-semibold text-muted small mb-2">Toplam Öğrenci</h6>
-                        <h2 class="fw-bold mb-0 text-dark">Aktif</h2>
-                    </div>
-                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3">
-                        <i class="fa-solid fa-user-graduate fa-2x"></i>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <a href="/Students/Index" class="text-primary text-decoration-none small fw-medium">
-                        Öğrencileri Yönet <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Kurslar Kart Izgarası -->
+<div class="row g-4 mb-5 animate-fade-in" style="animation-delay: 0.2s;">
+    @if (Model.listele != null && Model.listele.Count > 0)
+    {
+        foreach (var course in Model.listele)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-premium h-100">
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <!-- Kurs İkonu ve Kategori -->
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge bg-light text-dark border px-2.5 py-1.5 rounded-pill small fw-medium">
+                                    <i class="fa-solid fa-tags me-1 text-muted"></i> Yazılım & IT
+                                </span>
+                                <span class="text-muted small fw-medium"><i class="fa-regular fa-clock me-1"></i> @course.Duration Saat</span>
+                            </div>
+                            
+                            <!-- Kurs Adı -->
+                            <h4 class="fw-bold text-dark mb-2">@course.CourseName</h4>
+                            
+                            <!-- Eğitmen -->
+                            <p class="text-muted mb-4 d-flex align-items-center gap-2 small">
+                                <i class="fa-solid fa-user-tie text-indigo"></i>
+                                <span>Eğitmen: <strong class="text-dark">@course.Instructor</strong></span>
+                            </p>
+                        </div>
 
-    <!-- Kurs İstatistiği -->
-    <div class="col-xl-4 col-md-6">
-        <div class="card border-0 shadow-sm rounded-3 h-100" style="border-left: 4px solid #10b981 !important;">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="text-uppercase fw-semibold text-muted small mb-2">Mevcut Kurslar</h6>
-                        <h2 class="fw-bold mb-0 text-dark">Aktif</h2>
-                    </div>
-                    <div class="bg-success bg-opacity-10 text-success rounded-circle p-3">
-                        <i class="fa-solid fa-book-bookmark fa-2x"></i>
+                        <!-- Detaylar & Fiyat -->
+                        <div class="border-top pt-3 mt-auto">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-muted d-block small">Başlangıç</span>
+                                    <span class="text-dark fw-semibold small"><i class="fa-regular fa-calendar-check me-1"></i> @course.StartDate</span>
+                                </div>
+                                <div class="text-end">
+                                    <span class="text-muted d-block small">Eğitim Ücreti</span>
+                                    <h4 class="fw-extrabold text-success mb-0">@course.Price <span class="fs-6 fw-bold">TL</span></h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="mt-3">
-                    <a href="/Courses/Index" class="text-success text-decoration-none small fw-medium">
-                        Kursları İncele <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center py-5">
+            <div class="card border-0 bg-white p-5 rounded-4 shadow-sm max-w-md mx-auto">
+                <i class="fa-solid fa-face-rolling-eyes text-muted display-4 mb-3"></i>
+                <h5 class="fw-bold text-dark">Şu an aktif kurs bulunmamaktadır</h5>
+                <p class="text-muted mb-0 small">Lütfen daha sonra tekrar kontrol edin veya yöneticilerle iletişime geçin.</p>
             </div>
         </div>
-    </div>
-
-    <!-- Sertifika İstatistiği -->
-    <div class="col-xl-4 col-md-6">
-        <div class="card border-0 shadow-sm rounded-3 h-100" style="border-left: 4px solid #f59e0b !important;">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="text-uppercase fw-semibold text-muted small mb-2">Verilen Sertifikalar</h6>
-                        <h2 class="fw-bold mb-0 text-dark">Kayıtlı</h2>
-                    </div>
-                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-3">
-                        <i class="fa-solid fa-award fa-2x"></i>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <a href="/Certificates/Index" class="text-warning text-decoration-none small fw-medium">
-                        Sertifikaları Gör <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- HIZLI ERİŞİM VE AKSİYON ALANI -->
-<div class="card border-0 shadow-sm rounded-3">
-    <div class="card-header bg-white border-0 py-3">
-        <h5 class="mb-0 fw-bold text-dark"><i class="fa-solid fa-bolt me-2 text-danger"></i>Hızlı İşlemler</h5>
-    </div>
-    <div class="card-body p-4 pt-2">
-        <p class="text-muted small mb-4">Sistem üzerinde sık gerçekleştirdiğiniz işlemlere tek tıkla ulaşın:</p>
-        <div class="row g-3">
-            <div class="col-md-4">
-                <a href="/Students/Create" class="btn btn-outline-primary w-100 py-3 rounded-3 fw-medium">
-                    <i class="fa-solid fa-user-plus me-2"></i>Yeni Öğrenci Ekle
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/Courses/Create" class="btn btn-outline-success w-100 py-3 rounded-3 fw-medium">
-                    <i class="fa-solid fa-folder-plus me-2"></i>Yeni Kurs Tanımla
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/Certificates/Create" class="btn btn-outline-warning w-100 py-3 rounded-3 fw-medium text-dark">
-                    <i class="fa-solid fa-file-signature me-2"></i>Sertifika Oluştur
-                </a>
-            </div>
-        </div>
-    </div>
+    }
 </div>

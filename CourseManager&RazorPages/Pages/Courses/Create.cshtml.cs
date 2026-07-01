@@ -45,7 +45,6 @@ namespace CourseManager_RazorPages.Pages.Courses
                         command.Parameters.AddWithValue("@CourseName", courseInfo.CourseName);
                         command.Parameters.AddWithValue("@Instructor", courseInfo.Instructor);
 
-                        // Sayısal değer boş geldiyse DBNull basıyoruz
                         command.Parameters.AddWithValue("@Duration", string.IsNullOrEmpty(courseInfo.Duration) ? DBNull.Value : Convert.ToInt32(courseInfo.Duration));
                         command.Parameters.AddWithValue("@Price", string.IsNullOrEmpty(courseInfo.Price) ? DBNull.Value : Convert.ToDecimal(courseInfo.Price));
                         command.Parameters.AddWithValue("@StartDate", string.IsNullOrEmpty(courseInfo.StartDate) ? DBNull.Value : courseInfo.StartDate);

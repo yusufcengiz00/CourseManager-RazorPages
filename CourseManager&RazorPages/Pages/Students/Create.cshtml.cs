@@ -25,7 +25,7 @@ namespace CourseManager_RazorPages.Pages.Students
             studentInfo.Phone = Request.Form["Phone"];
             studentInfo.RegistrationDate = Request.Form["RegistrationDate"];
 
-            // Zorunlu alan kontrolü
+            // Validasyon
             if (string.IsNullOrEmpty(studentInfo.FirstName) ||
                 string.IsNullOrEmpty(studentInfo.LastName) ||
                 string.IsNullOrEmpty(studentInfo.Email))

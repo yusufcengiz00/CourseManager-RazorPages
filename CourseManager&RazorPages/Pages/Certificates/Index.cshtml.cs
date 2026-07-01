@@ -51,7 +51,6 @@ namespace CourseManager_RazorPages.Pages.Certificates
                                 Certificates sertifika = new Certificates
                                 {
                                     CertificateID = reader.GetInt32(0).ToString(),
-                                    // DATE tipini GetDateTime ile güvenli şekilde okuyoruz
                                     IssueDate = reader.IsDBNull(1) ? "" : reader.GetDateTime(1).ToString("dd.MM.yyyy"),
                                     CertificateNo = reader.IsDBNull(2) ? "" : reader.GetString(2)
                                 };
