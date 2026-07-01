@@ -13,7 +13,7 @@ CourseManager, ASP.NET Core Razor Pages mimarisi kullanılarak geliştirilmiş m
     *   **Öğrenci Yönetimi:** Yeni öğrenci ekleme, listeleme, düzenleme, silme ve arama.
     *   **Kurs Yönetimi:** Kurs ekleme, listeleme, düzenleme ve silme.
     *   **Sertifika Yönetimi:** Sertifika numarası ve tarihi ile sertifika kaydı yönetimi.
-    *   **Analiz & Raporlama:** Kursların toplam finansal değeri, ortalama kurs süresi, en kapsamlı kurs bilgisi ve son 30 gün içinde kayıt olan öğrenci istatistikleri.
+    *   **Analiz & Raporlama:** Kursların toplam finansal değeri, ortalama kurs süresi, en kapsamlı kurs bilgisi ve son 30 gün içinde kayıt olan öğrenci istatistikleri. Bu verileri PDF ve Excel formatında indirebilirsiniz.
 
 ## Teknoloji Yığını
 
